@@ -33,60 +33,60 @@ function randomIntInc(low, high) {
 //     socket.emit('newDataPoint', data);
 // }, 500);
 
-// var buff_timeStamp = new Date().getTime();
-//
-// setInterval(() => {
-//
-//     Jeep_list.push([randomIntInc(10,20),randomIntInc(30,40)]);
-//     Jeep_list.push([randomIntInc(30,40),randomIntInc(50,60)]);
-//     // Jeep_list.push([randomIntInc(80,90),randomIntInc(80,90)]);
-//     // Jeep_list.push([randomIntInc(5,10),randomIntInc(20,30)]);
-//     // Jeep_list.push([randomIntInc(15,25),randomIntInc(25,35)]);
-//     // Jeep_list.push([randomIntInc(37,47),randomIntInc(58,68)]);
-//     // Jeep_list.push([randomIntInc(88,98),randomIntInc(88,99)]);
-//
-//     let Jeep_meanshift_points;
-//     let Jeep_meanshift_centroids;
-//     let cluster_number;
-//     if((new Date().getTime()-buff_timeStamp)/1000 >= 2){//second
-//
-//         let meanShift_result = meanShift.fit(Jeep_list,10);
-//         Jeep_meanshift_points = meanShift_result[0];
-//         Jeep_meanshift_centroids = meanShift_result[1];
-//         cluster_number = Jeep_meanshift_centroids.length;
-//         // console.log(Jeep_meanshift_centroids);
-//     }
-//
-//
-//     if((new Date().getTime()-buff_timeStamp)/1000 >= 4){//second
-//
-//         let cluster_list = [];
-//         for(let i = 0; i<cluster_number; i++){
-//             cluster_list.push("Jeep"+i);
-//         }
-//
-//         for(let i =0; i<cluster_number; i++){
-//             let bubble_data = {};
-//             bubble_data.x = Jeep_meanshift_points[i].centroid[0];
-//             bubble_data.y = Jeep_meanshift_points[i].centroid[1];
-//             bubble_data.points = Jeep_meanshift_points[i].points;
-//             bubble_data.size = Jeep_meanshift_points[i].points.length;
-//             bubble_data.car_brand = "Jeep"+i;
-//             bubble_data.id = 2;
-//             if(i===cluster_number-1){
-//                 bubble_data.clusterList = cluster_list;
-//             }
-//             // console.log("pushed bubble_data.x: " + bubble_data.x + " bubble_data.y: " + bubble_data.y);
-//             // console.log("pushed bubble_data.car_brand: " + bubble_data.car_brand);
-//             // console.log("pushed bubble_data.size: " + bubble_data.size);
-//             socket.emit('newBubbleDataPoint', bubble_data);
-//         }
-//
-//         buff_timeStamp = new Date().getTime();
-//
-//     }
-//
-// }, 500);
+var buff_timeStamp = new Date().getTime();
+
+setInterval(() => {
+
+    Jeep_list.push([randomIntInc(10,20),randomIntInc(30,40)]);
+    Jeep_list.push([randomIntInc(30,40),randomIntInc(50,60)]);
+    // Jeep_list.push([randomIntInc(80,90),randomIntInc(80,90)]);
+    // Jeep_list.push([randomIntInc(5,10),randomIntInc(20,30)]);
+    // Jeep_list.push([randomIntInc(15,25),randomIntInc(25,35)]);
+    // Jeep_list.push([randomIntInc(37,47),randomIntInc(58,68)]);
+    // Jeep_list.push([randomIntInc(88,98),randomIntInc(88,99)]);
+
+    let Jeep_meanshift_points;
+    let Jeep_meanshift_centroids;
+    let cluster_number;
+    if((new Date().getTime()-buff_timeStamp)/1000 >= 2){//second
+
+        let meanShift_result = meanShift.fit(Jeep_list,10,2);
+        Jeep_meanshift_points = meanShift_result[0];
+        Jeep_meanshift_centroids = meanShift_result[1];
+        cluster_number = Jeep_meanshift_centroids.length;
+        console.log(Jeep_meanshift_points);
+    }
+
+
+    if((new Date().getTime()-buff_timeStamp)/1000 >= 4){//second
+
+        let cluster_name_list = [];
+        for(let i = 0; i<cluster_number; i++){
+            cluster_name_list.push("Jeep"+i);
+        }
+
+        for(let i =0; i<cluster_number; i++){
+            let bubble_data = {};
+            bubble_data.x = Jeep_meanshift_points[i].centroid[0];
+            bubble_data.y = Jeep_meanshift_points[i].centroid[1];
+            bubble_data.points = Jeep_meanshift_points[i].points;
+            bubble_data.size = Jeep_meanshift_points[i].points.length;
+            bubble_data.car_brand = "Jeep"+i;
+            bubble_data.id = 2;
+            if(i===0){
+                bubble_data.clusterList = cluster_name_list;
+            }
+            // console.log("pushed bubble_data.x: " + bubble_data.x + " bubble_data.y: " + bubble_data.y);
+            // console.log("pushed bubble_data.car_brand: " + bubble_data.car_brand);
+            // console.log("pushed bubble_data.size: " + bubble_data.size);
+            socket.emit('newBubbleDataPoint', bubble_data);
+        }
+
+        buff_timeStamp = new Date().getTime();
+
+    }
+
+}, 500);
 
 
 //define ranges
@@ -105,7 +105,7 @@ for(let i = low_y; i<=high_y; i=i+bin_size){
 }
 
 let grid_dict = {};//store the index of each grid in grid_list
-let grid_list = [];//store the actual grids i the format of [y,x,temp,count]
+let grid_list = [];//store the actual grids i the format of [x,y,temp,points,count]
 let device_id = 0;
 let device_dict = {};
 

@@ -1,7 +1,7 @@
 
 
 //mean shift
-function fit(data,radius){
+function fit(data,radius,c_distance){
 
     var centroids = [];
     for(let i=0;i<data.length;i++){
@@ -31,7 +31,7 @@ function fit(data,radius){
             new_centroids_points.push(new_centroid_points);
         }
 
-        var uniques = removeDupFromMultiArr(new_centroids);
+        var uniques = removeDupFromMultiArr(new_centroids, c_distance);
         var prev_centroids = JSON.parse(JSON.stringify(centroids));
 
         centroids = [];
@@ -57,17 +57,17 @@ function fit(data,radius){
     }
 }
 
-function removeDupFromMultiArr( arr){
+function removeDupFromMultiArr( arr, distance){
 
     var uniques = [];
-    var centroid_distance = 2;
+    var centroid_distance = distance;
 
     for(var i = 0; i<arr.length; i++){
 
         let unique = true;
         for (var j = 0; j<uniques.length; j++){
 
-            if((Math.abs(arr[i][0]-uniques[j][0])<centroid_distance)&&(Math.abs(arr[i][0]-uniques[j][0])<centroid_distance)){//if within range of 5, abandon this center
+            if((Math.abs(arr[i][0]-uniques[j][0])<centroid_distance)&&(Math.abs(arr[i][0]-uniques[j][0])<centroid_distance)){//if within range of c_distance, abandon this center
                 unique = false;
                 break;
             }
@@ -116,7 +116,7 @@ function arraysEqual(a1,a2) {
 
 // console.log(fit(data,radius));
 module.exports = {
-    fit : function (d, r) {
-        return fit(d,r);
+    fit : function (d, r, c_distance) {
+        return fit(d,r, c_distance);
     }
 };

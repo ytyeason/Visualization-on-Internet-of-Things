@@ -92,7 +92,6 @@ class BubbleStore {
         };
 
         return option;
-
     }
 
     addDataPoints(x, y, carbrand, size, clusterList, points) {
@@ -120,7 +119,7 @@ class BubbleStore {
             this.s = new_s;//refresh s
 
         }else{//clusterList has been defined
-            this.s[dictionary[carbrand]] = [[x,y,size]];//replace the k means point for that group
+            this.s[dictionary[carbrand]] = [[x,y,size]];//replace the cluster point for that group
         }
 
     };
