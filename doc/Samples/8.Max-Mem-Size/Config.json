@@ -115,6 +115,17 @@
               "y" : "y"
             }
           }
+        },
+        {
+          "type": "bubble",
+          "windowSize":"20",
+          "store": {
+            "socket":{
+              "id": "0",
+              "x" : "x",
+              "y" : "y"
+            }
+          }
         }
       ]
     }

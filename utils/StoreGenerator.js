@@ -99,6 +99,21 @@ module.exports = function(storeName, panel, pageDirectory){
             }\
             this.array[gateIndex]=array;\
             };");
+        } else if(panel.type == 'bubble'){
+            // initialize an empty array so that when socket.io emits messages in, it will store the data in the array
+            ws.writeLine("@observable array = [[],[]];");
+            // form  based on headers definition in the Config.json
+            ws.writeLine("@computed get scatter"+EchartAdaptor.bubble.toString().replace('function',''));
+            ws.writeLine("addDataPoints (x,y,gateIndex){\
+                for (var i = 0; i < gateIndex - this.array.length + 1; i++) {this.array.push([]);}\
+                this.array[gateIndex].push([x,y])};\n\
+                setArray(array,gateIndex){\
+                for (var i = 0; i < gateIndex - this.array.length + 1; i++) {\
+                this.array.push([]);\
+            }\
+            this.array[gateIndex]=array;\
+            };");
+
         } else if(panel.type == 'pie') {
             // initialize an empty array so that when socket.io emits messages in, it will store the data in the array
             ws.writeLine("@observable array = [[],[]];");

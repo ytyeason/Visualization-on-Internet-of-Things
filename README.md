@@ -72,5 +72,3 @@ npm run beautify
  
 
 # Visualization-on-Internet-of-Things
-# Visualization-on-Internet-of-Things
-# Visualization-on-Internet-of-Things

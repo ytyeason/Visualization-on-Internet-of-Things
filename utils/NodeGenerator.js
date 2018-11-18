@@ -13,11 +13,15 @@ module.exports = {
             console.log('Index.js Written');
 
             // Create a write stream, and add in/extend with the writeLine() method
-            var ws = fs.createWriteStream(path+'/index.js', {flags: 'a'})
+            var ws = fs.createWriteStream(path+'/index.js', {flags: 'a'});
+
+            //todo: no use??? wtf
             ws.writeLine = (str)=> {
                 ws.write('\n');
                 ws.write(str);
             };
+
+
             ws.writeLine(__ImportDependencies__);
             ws.writeLine(__WebpackSetup__);
             ws.writeLine(__AppSetup(port));
@@ -44,7 +48,7 @@ module.exports = {
         ws.writeLine(__SocketIOSetup__);
     });
     }
-}
+};
 
 
 // Static and boring boilerplates
@@ -59,7 +63,7 @@ const webpackDevMiddleware = require('webpack-dev-middleware');\
 const webpackConfig = require('./webpack.config.js');\
 const app = express();\
 const server = http.createServer(app);\
-const io = socketIo(server);"
+const io = socketIo(server);";
 
 // write code to set up webpack and HMR
 const __WebpackSetup__ = "webpackConfig.plugins.push(new webpack.HotModuleReplacementPlugin());\
@@ -97,7 +101,7 @@ socket.on('newDataPoint', body =>{\
 socket.on('disconnect', function() {\
     console.log('disconnect');\
 });\
-});"
+});";
 
 // write code to set up socket.io services with the node service as the main memory store
 const __SocketIOSetupWithMaxSize = (maxMemorySize) => {return "\
@@ -127,4 +131,4 @@ socket.on('newDataPoint', body => {\
 socket.on('disconnect', function() {\
     console.log('disconnect');\
     });\
-});"}
+});"};

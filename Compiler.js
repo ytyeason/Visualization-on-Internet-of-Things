@@ -25,6 +25,7 @@ fs.readFile(process.argv[2], 'utf8', function(err,data){
 
     // Step 1, read .json file and parse it
     config = JSON.parse(data)
+    // console.log(config)
 
     // Step 2, generate a wepack.config.js file inside of the application folder the user wants to write to
     webpackGenerator(config.path)
