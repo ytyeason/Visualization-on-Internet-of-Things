@@ -2,13 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="95a4fb3c-8c17-4b8d-8d7c-7583dc1e617a" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/Compiler.js" beforeDir="false" afterPath="$PROJECT_DIR$/Compiler.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/doc/Samples/8.Max-Mem-Size/Config.json" beforeDir="false" afterPath="$PROJECT_DIR$/doc/Samples/8.Max-Mem-Size/Config.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/utils/EchartAdaptor.js" beforeDir="false" afterPath="$PROJECT_DIR$/utils/EchartAdaptor.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/utils/NodeGenerator.js" beforeDir="false" afterPath="$PROJECT_DIR$/utils/NodeGenerator.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/utils/PageGenerator.js" beforeDir="false" afterPath="$PROJECT_DIR$/utils/PageGenerator.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/utils/StoreGenerator.js" beforeDir="false" afterPath="$PROJECT_DIR$/utils/StoreGenerator.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -79,13 +74,18 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Data-mocker.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Data-mocker.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/Data-mocker.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="1258">
               <caret line="147" selection-start-line="147" selection-end-line="147" />
             </state>
           </provider>
+        </entry>
+      </file>
+      <file leaf-file-name=".gitignore" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/.gitignore">
+          <provider selected="true" editor-type-id="text-editor" />
         </entry>
       </file>
       <file leaf-file-name="meanShift.js" pinned="false" current-in-tab="false">
@@ -199,6 +199,7 @@
         <option value="$PROJECT_DIR$/app/Dashboard/BinStore.js" />
         <option value="$PROJECT_DIR$/README.md" />
         <option value="$PROJECT_DIR$/app/Data-mocker.js" />
+        <option value="$PROJECT_DIR$/.gitignore" />
       </list>
     </option>
   </component>
@@ -299,12 +300,12 @@
       <workItem from="1541222408127" duration="8966000" />
       <workItem from="1541893826883" duration="29991000" />
       <workItem from="1542074061141" duration="4502000" />
-      <workItem from="1542411997419" duration="127000" />
+      <workItem from="1542411997419" duration="232000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="145931000" />
+    <option name="totallyTimeSpent" value="146036000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -317,9 +318,10 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
+    <editor active="true" />
     <layout>
       <window_info anchor="bottom" id="TypeScript" order="8" />
-      <window_info content_ui="combo" id="Project" order="3" visible="true" weight="0.19309373" />
+      <window_info active="true" content_ui="combo" id="Project" order="3" visible="true" weight="0.19309373" />
       <window_info anchor="bottom" id="TODO" order="11" weight="0.32969698" />
       <window_info anchor="bottom" id="Docker" order="0" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="2" side_tool="true" />
@@ -327,7 +329,7 @@
       <window_info anchor="bottom" id="Version Control" order="3" />
       <window_info id="npm" order="0" side_tool="true" />
       <window_info id="Structure" order="2" side_tool="true" weight="0.25" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="1" visible="true" weight="0.10181818" />
+      <window_info anchor="bottom" id="Terminal" order="1" visible="true" weight="0.24242425" />
       <window_info anchor="bottom" id="Debug" order="7" weight="0.4" />
       <window_info id="Favorites" order="1" side_tool="true" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -346,13 +348,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/Data-mocker.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="960">
-          <caret line="64" column="55" lean-forward="true" selection-start-line="64" selection-start-column="55" selection-end-line="64" selection-end-column="55" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/Data-mocker.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="285">
@@ -708,6 +703,9 @@
           <caret line="147" selection-start-line="147" selection-end-line="147" />
         </state>
       </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor" />
     </entry>
   </component>
 </project>
