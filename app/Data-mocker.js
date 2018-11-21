@@ -33,60 +33,58 @@ function randomIntInc(low, high) {
 //     socket.emit('newDataPoint', data);
 // }, 500);
 //
-// var buff_timeStamp = new Date().getTime();
-//
-// setInterval(() => {
-//
-//     Jeep_list.push([randomIntInc(60,80),randomIntInc(80,100)]);
-//     Jeep_list.push([randomIntInc(30,50),randomIntInc(60,80)]);
-//     // Jeep_list.push([randomIntInc(80,90),randomIntInc(80,90)]);
-//     // Jeep_list.push([randomIntInc(5,10),randomIntInc(20,30)]);
-//     // Jeep_list.push([randomIntInc(15,25),randomIntInc(25,35)]);
-//     // Jeep_list.push([randomIntInc(37,47),randomIntInc(58,68)]);
-//     // Jeep_list.push([randomIntInc(88,98),randomIntInc(88,99)]);
-//
-//     let Jeep_meanshift_points;
-//     let Jeep_meanshift_centroids;
-//     let cluster_number;
-//     if((new Date().getTime()-buff_timeStamp)/1000 >= 0.5){//second
-//
-//         let meanShift_result = meanShift.fit(Jeep_list,3,2);
-//         Jeep_meanshift_points = meanShift_result[0];
-//         Jeep_meanshift_centroids = meanShift_result[1];
-//         cluster_number = Jeep_meanshift_centroids.length;
-//         console.log(Jeep_meanshift_points);
-//     }
-//
-//
-//     if((new Date().getTime()-buff_timeStamp)/1000 >= 1){//second
-//
-//         let cluster_name_list = [];
-//         for(let i = 0; i<cluster_number; i++){
-//             cluster_name_list.push("Jeep"+i);
-//         }
-//
-//         for(let i =0; i<cluster_number; i++){
-//             let bubble_data = {};
-//             bubble_data.x = Jeep_meanshift_points[i].centroid[0];
-//             bubble_data.y = Jeep_meanshift_points[i].centroid[1];
-//             bubble_data.points = Jeep_meanshift_points[i].points;
-//             bubble_data.size = Jeep_meanshift_points[i].points.length;
-//             bubble_data.car_brand = "Jeep"+i;
-//             bubble_data.id = 2;
-//             if(i===0){
-//                 bubble_data.clusterList = cluster_name_list;
-//             }
-//             // console.log("pushed bubble_data.x: " + bubble_data.x + " bubble_data.y: " + bubble_data.y);
-//             // console.log("pushed bubble_data.car_brand: " + bubble_data.car_brand);
-//             // console.log("pushed bubble_data.size: " + bubble_data.size);
-//             socket.emit('newBubbleDataPoint', bubble_data);
-//         }
-//
-//         buff_timeStamp = new Date().getTime();
-//
-//     }
-//
-// }, 500);
+
+
+var buff_timeStamp = new Date().getTime();
+
+setInterval(() => {
+
+    Jeep_list.push([randomIntInc(60,80),randomIntInc(80,100)]);
+    Jeep_list.push([randomIntInc(30,50),randomIntInc(60,80)]);
+    // Jeep_list.push([randomIntInc(80,90),randomIntInc(80,90)]);
+    // Jeep_list.push([randomIntInc(5,10),randomIntInc(20,30)]);
+    // Jeep_list.push([randomIntInc(15,25),randomIntInc(25,35)]);
+    // Jeep_list.push([randomIntInc(37,47),randomIntInc(58,68)]);
+    // Jeep_list.push([randomIntInc(88,98),randomIntInc(88,99)]);
+
+    let Jeep_meanshift_points;
+    let Jeep_meanshift_centroids;
+    let cluster_number;
+    if((new Date().getTime()-buff_timeStamp)/1000 >= 3){//second
+
+        let meanShift_result = meanShift.fit(Jeep_list,10,5);
+        Jeep_meanshift_points = meanShift_result[0];
+        Jeep_meanshift_centroids = meanShift_result[1];
+        cluster_number = Jeep_meanshift_centroids.length;
+        console.log(Jeep_meanshift_points);
+
+        let cluster_name_list = [];
+        for(let i = 0; i<cluster_number; i++){
+            cluster_name_list.push("Jeep"+i);
+        }
+
+        for(let i =0; i<cluster_number; i++){
+            let bubble_data = {};
+            bubble_data.x = Jeep_meanshift_points[i].centroid[0];
+            bubble_data.y = Jeep_meanshift_points[i].centroid[1];
+            bubble_data.points = Jeep_meanshift_points[i].points;
+            bubble_data.size = Jeep_meanshift_points[i].points.length;
+            bubble_data.car_brand = "Jeep"+i;
+            bubble_data.id = 2;
+            if(i===0){
+                bubble_data.clusterList = cluster_name_list;
+            }
+            // console.log("pushed bubble_data.x: " + bubble_data.x + " bubble_data.y: " + bubble_data.y);
+            // console.log("pushed bubble_data.car_brand: " + bubble_data.car_brand);
+            // console.log("pushed bubble_data.size: " + bubble_data.size);
+            socket.emit('newBubbleDataPoint', bubble_data);
+        }
+
+        buff_timeStamp = new Date().getTime();
+
+    }
+
+}, 500);
 
 
 //define ranges

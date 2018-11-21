@@ -69,7 +69,9 @@ class BubbleStore {
                     emphasis: {
                         show: true,
                         position: 'left',
-                        formatter: function(){ return legend_name+ ", size "+ d[0][2]; }
+                        formatter: function(){
+                            return legend_name + "\n" + " size: "+ d[0][2] + "\n" + "location: " + d[0][0] + ", " + d[0][1];
+                        }
                     }
                 };
                 obj.symbolSize = function(){ return Math.min(d[0][2],50); };
